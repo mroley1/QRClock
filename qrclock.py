@@ -65,6 +65,21 @@ def main():
             codewords.append("11101100")
             first = True
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     #error correction codewords
     ERROR_COORECTION_QUANTITY = 17
     ERROR_COORECTION_BLOCKS_QUANTITY = 1
@@ -86,15 +101,15 @@ def main():
 
     def divide(a, b):
         return EXP[(LOG[a] + LOG[b] * 254) % 255]
+    print(LOG)
+    print(EXP)
 
     def polynimial_multiply(poly1, poly2):
-        print(poly1, poly2)
         coefficients = [_ for _ in range(len(poly1) + len(poly2) - 1)]
         for i in range(len(coefficients)):
             coefficient = 0
             for poly1Index in range(i+1):
                 poly2Index = i - poly1Index
-                print(poly1Index, poly1)
                 coefficient = coefficient ^ multiply(poly1[poly1Index], poly2[poly2Index])
             coefficients[i] = coefficient
         return coefficients
@@ -117,14 +132,15 @@ def main():
         for i in range(e_codewords_num):
             lastPoly = polynimial_multiply(lastPoly, [1, EXP[i]])
         return lastPoly
-    print(get_generator_poly(16))
+    #print(get_generator_poly(16))
 
     #(26, 9, 8)
     print(LOG)
     print(EXP)
     print(codewords)
-#main()
-import re
-string = "x^17 + a^43 x^16 + a^139 x^15 + a^206 x^14 + a^78 x^13 + a^43 x^12 + a^239 x^11 + a^123 x^10 + a^206 x^9 + a^214 x^8 + a^147 x^7 + a^24 x^6 + a^99 x^5 + a^150 x^4 + a^39 x^3 + a^243 x^2 + a^163 x + a^136"
 
-print(re.findall("(?<=a\^)\d+", string))
+main()
+#import re
+#string = "x^17 + a^43 x^16 + a^139 x^15 + a^206 x^14 + a^78 x^13 + a^43 x^12 + a^239 x^11 + a^123 x^10 + a^206 x^9 + a^214 x^8 + a^147 x^7 + a^24 x^6 + a^99 x^5 + a^150 x^4 + a^39 x^3 + a^243 x^2 + a^163 x + a^136"
+
+#print(re.findall("(?<=a\^)\d+", string))
